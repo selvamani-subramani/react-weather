@@ -4,14 +4,14 @@ import WeatherList from './WeatherList'
 function WeatherByDay({list}) {
   console.log(list)
   return (
-    <section className='pull-left'>
-      <div>
+    <div className='col-md-4'>
+      <h3 className='text-center'>
         {list.date()}
-      </div>
-      <ul>
+      </h3>
+      <ul className='list-unstyled'>
         {list.items.map((l) => <WeatherList key={l.dt} list={l} />)}
       </ul>
-    </section>
+    </div>
   );
 }
 

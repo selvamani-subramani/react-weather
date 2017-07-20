@@ -5,17 +5,17 @@ function WeatherList({list}) {
 
   return (
     <li>
-      Time {list.dt_txt}
       <img src={'http://openweathermap.org/img/w/' + list.weather[0].icon + '.png'} />
+      <b>Time {list.dt_txt.split(' ')[1]}</b>
       <b>
         {list.weather.description}
       </b>
       <p>
         Cloud
-        <span class="badge badge-info">
+        <span className="label label-default">
           {list.clouds.all}%
         </span>
-        Temperature {list.main.temp_min} to {list.main.temp_max}
+        Temp {list.main.temp_min} to {list.main.temp_max}
       </p>
     </li>
   );

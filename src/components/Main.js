@@ -34,10 +34,12 @@ class AppComponent extends Component {
   render() {
     const {list} = this.state;
     return (
-      <div className='main-container'>
+      <div className='container'>
         <WeatherHeader cityName={this.state.cityName} />
-        <div className='weather-box'>
-          {list.map((l) => <WeatherByDay key={l.id()} list={l} />)}
+        <div className='row'>
+          <div className='wrapper'>
+            {list.map((l) => <WeatherByDay key={l.id()} list={l} />)}
+          </div>
         </div>
       </div>
     );

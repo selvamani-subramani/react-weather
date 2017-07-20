@@ -2,11 +2,15 @@ import React, {PropTypes} from 'react';
 
 function WeatherHeader({cityName}) {
   return (
-    <header className='info'>
-      <h2>
-        {cityName}
-      </h2>
-    </header>
+    <div className='row'>
+      <div className='col-md-12'>
+        <div className="jumbotron">
+          <h1 className='text-center'>
+            {cityName}
+          </h1>
+        </div>
+      </div>
+    </div>
   );
 }
 
