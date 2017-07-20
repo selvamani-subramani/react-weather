@@ -26,6 +26,10 @@ module.exports = {
         loader: 'null-loader'
       },
       {
+        test: /\.json$/,
+        loader: 'json'
+      },
+      {
         test: /\.(js|jsx)$/,
         loader: 'babel-loader',
         include: [].concat(
@@ -37,6 +41,12 @@ module.exports = {
         )
       }
     ]
+  },
+  externals: {
+    'cheerio': 'window',
+    'react/addons': true,
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': true,
   },
   resolve: {
     extensions: [ '', '.js', '.jsx' ],

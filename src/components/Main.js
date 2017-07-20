@@ -1,7 +1,7 @@
 require('normalize.css/normalize.css');
 require('styles/App.scss');
 
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import {getWeather} from '../utils/openweather-api';
 import WeatherDecorator from '../decorator/weatherDecorator'
 import WeatherHeader from './main/WeatherHeader'
@@ -17,13 +17,17 @@ class AppComponent extends Component {
     };
   }
 
+  updateWeather(data){
+    const d = new WeatherDecorator(data);
+    const list = d.dailyReport();
+    this.setState({cityName: d.getCity()});
+    this.setState({list});
+  }
+
   getWeather() {
-    getWeather('London,us')
+    this.props.getWeather('London,us')
       .then((data) => {
-        const d = new WeatherDecorator(data);
-        const list = d.dailyReport();
-        this.setState({cityName: d.getCity()});
-        this.setState({list});
+        this.updateWeather(data)
       });
   }
 
@@ -47,3 +51,9 @@ class AppComponent extends Component {
 }
 
 export default AppComponent;
+
+
+AppComponent.propTypes = {
+  getWeather: PropTypes.func
+};
+AppComponent.defaultProps = {getWeather}

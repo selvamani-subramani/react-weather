@@ -13,7 +13,7 @@ class WeatherDecorator {
 
   dailyReport() {
     if(this.itemList){
-      return {};
+      return this.itemList;
     }
     let itemList = []
     let grouped = _.groupBy(this.weather.list, function(item) {

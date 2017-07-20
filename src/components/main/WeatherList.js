@@ -1,6 +1,5 @@
 import React, {PropTypes} from 'react';
 
-
 function WeatherList({list}) {
 
   return (

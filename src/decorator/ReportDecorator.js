@@ -16,9 +16,6 @@ class ReportDecorator {
     return this.items
   }
 
-  desc(){
-    
-  }
 }
 
 export default ReportDecorator;

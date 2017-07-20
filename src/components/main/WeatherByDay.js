@@ -2,7 +2,6 @@ import React, {PropTypes} from 'react';
 import WeatherList from './WeatherList'
 
 function WeatherByDay({list}) {
-  console.log(list)
   return (
     <div className='col-md-4'>
       <h3 className='text-center'>
