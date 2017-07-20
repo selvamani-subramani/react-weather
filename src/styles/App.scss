@@ -1,0 +1,12 @@
+/* Base Application Styles */
+
+body {
+  .image-wrapper {
+    background-image: url('../images/weathersunny.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
+}

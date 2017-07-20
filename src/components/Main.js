@@ -1,22 +1,36 @@
 require('normalize.css/normalize.css');
-require('styles/App.css');
+require('styles/App.scss');
 
-import React from 'react';
+import React, {Component} from 'react';
+import {getWeather} from '../utils/openweather-api';
 
-let yeomanImage = require('../images/yeoman.png');
 
-class AppComponent extends React.Component {
+class AppComponent extends Component {
+  constructor() {
+    super()
+    this.state = {list: {cod: 'India'}}
+  }
+
+  getWeather() {
+    getWeather('London,us')
+      .then((s) => {
+        this.setState({list: s});
+      });
+  }
+
+  componentWillMount() {
+    this.getWeather();
+  }
+
+
   render() {
+    const {list} = this.state
     return (
-      <div className="index">
-        <img src={yeomanImage} alt="Yeoman Generator" />
-        <div className="notice">Please edit <code>src/components/Main</code> to get started!</div>
+      <div>
+        
       </div>
     );
   }
 }
-
-AppComponent.defaultProps = {
-};
 
 export default AppComponent;
