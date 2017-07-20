@@ -3,18 +3,27 @@ require('styles/App.scss');
 
 import React, {Component} from 'react';
 import {getWeather} from '../utils/openweather-api';
+import WeatherDecorator from '../decorator/weatherDecorator'
+import WeatherHeader from './main/WeatherHeader'
+import WeatherByDay from './main/WeatherByDay'
 
 
 class AppComponent extends Component {
   constructor() {
     super()
-    this.state = {list: {cod: 'India'}}
+    this.state = {
+      cityName: null,
+      list: []
+    };
   }
 
   getWeather() {
     getWeather('London,us')
-      .then((s) => {
-        this.setState({list: s});
+      .then((data) => {
+        const d = new WeatherDecorator(data);
+        const list = d.dailyReport();
+        this.setState({cityName: d.getCity()});
+        this.setState({list});
       });
   }
 
@@ -22,12 +31,14 @@ class AppComponent extends Component {
     this.getWeather();
   }
 
-
   render() {
-    const {list} = this.state
+    const {list} = this.state;
     return (
-      <div>
-        
+      <div className='main-container'>
+        <WeatherHeader cityName={this.state.cityName} />
+        <div className='weather-box'>
+          {list.map((l) => <WeatherByDay key={l.id()} list={l} />)}
+        </div>
       </div>
     );
   }
